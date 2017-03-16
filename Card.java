@@ -31,4 +31,18 @@ public class Card {
       value = v;
       id = Integer.toString(v);
     }
+  
+    //Get/Set Methods
+    public String getSuit() {return suit;}
+    public String getID() {return id;}
+    public int getValue() {return value;}
+    public void setSuit(String s) {suit = s;}
+    public void setID (String i) {id = i;}
+    public void setValue (int v) {value = v;}
+    
+    //ToString
+    public String toString() {
+      return id+" of "+suit;
+    }
 }
+  
