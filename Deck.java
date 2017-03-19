@@ -8,8 +8,10 @@ public class Deck {
   public Deck() {}
   
   public void createDeck () {
-    
-      
+    for (int j = 0; j < 6; j++) {
+      for (int i = 0; i < 14; i++)
+        deck.add(i, new Card (Heart, i);
+    }   
   }
   
   public void shuffleDeck() {
