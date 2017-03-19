@@ -23,7 +23,7 @@ public class Card {
       value = 10;
       id = "King";
     }
-    else if (v == 14) {
+    else if (v == 1) {
       value = 11;
       id = "Ace";
     }
