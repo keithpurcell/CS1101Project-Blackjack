@@ -9,9 +9,21 @@ public class Deck {
   
   public void createDeck () {
     for (int j = 0; j < 6; j++) {
-      for (int i = 0; i < 14; i++)
+      for (int i = 1; i < 14; i++)
         deck.add(i, new Card (Heart, i);
-    }   
+    }
+    for (int j = 0; j < 6; j++) {
+      for (int i = 1; i < 14; i++)
+        deck.add(i, new Card (Spade, i);
+    }
+    for (int j = 0; j < 6; j++) {
+      for (int i = 1; i < 14; i++)
+        deck.add(i, new Card (Diamond, i);
+    }
+    for (int j = 0; j < 6; j++) {
+      for (int i = 1; i < 14; i++)
+        deck.add(i, new Card (Club, i);
+    }
   }
   
   public void shuffleDeck() {
