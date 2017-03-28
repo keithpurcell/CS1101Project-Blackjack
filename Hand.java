@@ -1,3 +1,6 @@
+package blackjack;
+
+import java.util.ArrayList;
 public class Hand {
   private ArrayList<Card> cards;
   
@@ -7,22 +10,26 @@ public class Hand {
       cards.add(c2);
   }
   //get/set methods
-  public Card getHand() {return cards;}
-  public Card getCard1() {return card1;}
-  public Card getCard2() {return card2;}
-  public void setCard1(Card c1) {card1 = c1;}
-  public void setCard2(Card c2) {card2 = c2;}
+  public ArrayList getHand() {return cards;}
   
+<<<<<<< Updated upstream
+=======
+  //Hit Method
+  public void add(Card c) {
+    cards.add(c);
+  }
+  
+>>>>>>> Stashed changes
   //Counts the value of your hand
   public int count() {
     int result = 0;
-    for(int i=0; i<card.size(); i++) 
+    for(int i=0; i<cards.size(); i++) 
       result += cards.get(i).getValue();
     return result;
   }
   
   //toString
   public String toString() {
-    return cards;
+    return cards.toString();
   }
 }
