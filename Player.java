@@ -19,7 +19,7 @@ public class Player {
   public String getName(){
     return name;
   }
-  public int getStack(){
+  public ArrayList<Chip> getStack(){
     return stack;
   }
   public Hand getHand(){
@@ -62,8 +62,25 @@ public class Player {
     }
   }
   
+  //Hit Method
+  public void hit(Card c) {
+    hand.add(c);
+  }
+  
+  //canSplit
+  public boolean canSplit() {
+    boolean result = false;
+    if(hand.getHand().get(0).getID().equals(hand.getHand().get(1).getID()) && hand.getHand().get(0).getSuit().equals(hand.getHand().get(1).getSuit()))
+      result = true;
+  }
+  
+  //Split Method
+  public Card split() {
+    return (hand.getHand.remove(1));
+  }
   
   //toString
   public String toString(){
+      return name+": $"+getTotal();
   }
 }
