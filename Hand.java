@@ -13,6 +13,11 @@ public class Hand {
   public void setCard1(Card c1) {card1 = c1;}
   public void setCard2(Card c2) {card2 = c2;}
   
+  //Add Method
+  public void add(Card c) {
+    cards.add(c);
+  }
+  
   //Counts the value of your hand
   public int count() {
     int result = 0;
