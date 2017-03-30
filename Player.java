@@ -72,6 +72,7 @@ public class Player {
     boolean result = false;
     if(hand.getHand().get(0).getID().equals(hand.getHand().get(1).getID()) && hand.getHand().get(0).getSuit().equals(hand.getHand().get(1).getSuit()))
       result = true;
+    return result;
   }
   
   //Split Method
