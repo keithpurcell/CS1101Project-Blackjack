@@ -12,14 +12,11 @@ public class Hand {
   //get/set methods
   public ArrayList getHand() {return cards;}
   
-<<<<<<< Updated upstream
-=======
   //Hit Method
   public void add(Card c) {
     cards.add(c);
   }
   
->>>>>>> Stashed changes
   //Counts the value of your hand
   public int count() {
     int result = 0;

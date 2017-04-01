@@ -34,23 +34,25 @@ public class Player {
 		name = n;
 	}
 
-	public void setStack(int s){
-    stack = s;
-  }
+	public void setStack(int s) {
+		stack = s;
+	}
 
 	public void setHand(Hand h) {
 		hand = h;
 	}
 
 	// other methods
-	public boolean isBroke(){
-    if (stack == 0)
-    	return true;
-    else
-    	return false;
+	public boolean isBroke() {
+		if (stack == 0)
+			return true;
+		else
+			return false;
 	}
 
 	// toString
 	public String toString() {
+		String p = name + "\n Stack: " + Integer.toString(stack) + "\n Hand: " + hand.toString();
+		return p;
 	}
 }

@@ -26,9 +26,9 @@ public class BlackjackDemo {
          //Take Bets and create hands
          System.out.println("What is your bet?");
          int bet = kb.nextInt();
-         p.setHand(master.deal(), master.deal());
+         //p.setHand(master.deal(), master.deal());
          //Create the "dealer"
-         Hand dealer = new Hand(master.deal(),master.deal());
+         //Hand dealer = new Hand(master.deal(),master.deal());
          
          int over = 3; //Turn over (3 for not over, 2 for stand, 0 for tie, 1 for win and -1 for loss)
          Hand split;//Useful for splitting
@@ -37,7 +37,7 @@ public class BlackjackDemo {
          
          //Turn Loop
          while(over == 3) {
-            System.out.println("\nDealer's Hand: "+dealer);
+            //System.out.println("\nDealer's Hand: "+ dealer);
             System.out.println("\nYour Hand: "+p.getHand());
       
             if(bjCheck(p.getHand()) == 1 && bjCheck(dealer) == 1) {
