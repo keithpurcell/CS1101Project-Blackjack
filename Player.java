@@ -33,6 +33,9 @@ public class Player {
 	public void setName(String n) {
 		name = n;
 	}
+	
+	//test
+	//test2
 
 	public void setStack(int s) {
 		stack = s;
