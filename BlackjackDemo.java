@@ -1,10 +1,15 @@
+/* There is a big section commented out that is checking for a canSplit method - Keigan
+ * Need to make "dealerPlay" static method
+ */
+
 package blackjack;
-//Suggest taking the split option out. 
-//Free to take a look but I can't get it to work within the turn loop so the player can play both hands at once}
+
 import java.util.Scanner;
-import java.ArrayList;
+import java.util.ArrayList;
 public class BlackjackDemo {
-   public static void main (String[] args) {
+	public static void main (String[] args) {
+	   
+	  //create scanner object
       Scanner kb = new Scanner(System.in);
  
       //Create and Shuffle Master Deck and Discard Deck
@@ -26,7 +31,8 @@ public class BlackjackDemo {
          //Take Bets and create hands
          System.out.println("What is your bet?");
          int bet = kb.nextInt();
-         p.setHand(master.deal(), master.deal());
+         p.addToHand(master.deal());
+         p.addToHand(master.deal());
          //Create the "dealer"
          Hand dealer = new Hand(master.deal(),master.deal());
          
@@ -37,7 +43,7 @@ public class BlackjackDemo {
          
          //Turn Loop
          while(over == 3) {
-            //System.out.println("\nDealer's Hand: "+ dealer);
+            System.out.println("\nDealer's Hand: "+ dealer);
             System.out.println("\nYour Hand: "+p.getHand());
       
             if(bjCheck(p.getHand()) == 1 && bjCheck(dealer) == 1) {
@@ -60,31 +66,31 @@ public class BlackjackDemo {
                   System.out.println("What would you like to do? (Hit, Stand, Split or Double) ");
                   String play = kb.next();
                   if(play.equalsIgnoreCase("hit"))
-                     p.hit();
-                  else if(play.equalsIgnoreCase("stand")) {
-                     over == 2;
+                     p.addToHand(master.deal());
+                  else if(play.equalsIgnoreCase("stand"))
+                     over = 2;
                   }
-                  else if(play.equalsIgnoreCase("split")) {
-                     if(p.canSplit() == true) {
-                        split = new Hand(p.getHand().getHand().remove(0), master.deal()) //New hand gets (1 card from old hand, new card)
-                        p.getHand().add(master.deal());//Adds a second card to the current hand
-                        sp = true
-                     }
-                     else
-                        System.out.println("You cannot split on your current hand.");
-                  }
+/*                  else if(play.equalsIgnoreCase("split")) {
+*					if(p.canSplit() == true) {
+*                   	split = new Hand(p.getHand().getHand().remove(0), master.deal()) //New hand gets (1 card from old hand, new card)
+*                       p.getHand().add(master.deal());//Adds a second card to the current hand
+*                       sp = true
+*                   }
+*                   else
+*  					    System.out.println("You cannot split on your current hand."); */
+                  //}
                   else if(play.equalsIgnoreCase("double")) {
                      bet = bet*2;
                      dd = true;
                   }
                }
                else if(dd == true && sp == false) 
-                  p.hit();
+                  p.addToHand(master.deal());
                /*else if (sp == true) {
                   System.out.println("Your Second Hand: "+split);*/
             }
             if(over == 2)
-               dealerPlay(dealer); //Static method that takes in a hand and plays based on the rules in which a dealer plays
+//******    	dealerPlay(dealer); ---- Static method that takes in a hand and plays based on the rules in which a dealer plays
    
          } //End of turn loop
          
@@ -112,19 +118,19 @@ public class BlackjackDemo {
          int playerSize = p.getHand().getHand().getSize();
          int dealerSize = dealer.getHand().getSize();
          for(int i=playerSize; i>=0; i++) {
-            Card c = player.getHand().getHand().get(i);//Store card
-            player.getHand().getHand().remove(i);//Remove from hand (to reset for next turn
-            discard.add(c);//Add the card to the discard pile (NEED THIS METHOD)
+            Card c = p.getHand().getHand().get(i); //ERROR - cannot convert from object to card
+            p.getHand().getHand().remove(i);//Remove from hand (to reset for next turn)
+            discard.addToDeck(c);
          }
          for(int i=dealerSize; i>=0; i++) {
-            Card d = dealer.getHand().get(i);
+            Card d = dealer.getHand().get(i); //ERROR - cannot convert from object to card
             dealer.getHand().remove(i);
-            discard.add(d);
+            discard.addToDeck(d);
          }
          
          //Re-integrate discard if at a certain point
-         if(discard.getSize()/*NEED THIS METHOD*/ >= 30) {
-            discard.empty();//NEED THIS METHOD to empty discard pile
+         if(discard.getSize() >= 30) {
+            discard.clearDeck();
             master.createDeck();
             master.shuffleDeck();
          }
@@ -133,20 +139,20 @@ public class BlackjackDemo {
          if(p.getStack() == 0)
             System.out.println("You have no money left. bye bye");
          else
-            System.out.println("You have $"+p.getStack()+" left. Would you like to leave
+            System.out.println("You have $" + p.getStack() + " left. Would you like to leave?");
          
       }//End of play loop
       
       System.out.println("Game Over");         
    }
-      
-   //BlackJack Checker (1 for BlackJack, -1 for bust, 0 for nothing)
-   public static int bjCheck(Hand h) {
-      int result = 0;
-      if(h.count() == 21)
-         result = 1;
-      else if(h.count() > 21)
-         result = -1;
-      return result;
-   }
+
+	// BlackJack Checker (1 for BlackJack, -1 for bust, 0 for nothing)
+	public static int bjCheck(Hand h) {
+		int result = 0;
+		if (h.count() == 21)
+			result = 1;
+		else if (h.count() > 21)
+			result = -1;
+		return result;
+	}
 }
