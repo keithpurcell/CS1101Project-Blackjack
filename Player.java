@@ -1,51 +1,37 @@
+/* Leave comments here [...]
+ * 
+ */
+
 package blackjack;
 
-import java.util.ArrayList;
-
 public class Player {
+	
+	//attributes
 	private String name;
-	private int stack;
+	private int stack; //this variable represents how much money the player has
 	private Hand hand;
-	int total;
 
+	//constructor method - create player
 	public Player(String n, int s) {
 		name = n;
 		stack = s;
 	}
 
-	// get and set methods
-	public String getName() {
-		return name;
-	}
+	public String getName() { return name; }
 
-	public int getStack() {
-		return stack;
-	}
+	public int getStack() { return stack; }
 
-	public Hand getHand() {
-		return hand;
-	}
+	public Hand getHand() { return hand; }
 
-	public int getTotal() {
-		return total;
-	}
+	public void setName(String n) { name = n; }
 
-	public void setName(String n) {
-		name = n;
-	}
-	
-	//test
-	//test2
+	//setStack method - sets players stack (how much money the player has)
+	public void setStack(int s) { stack = s; }
 
-	public void setStack(int s) {
-		stack = s;
-	}
+	//addToHand method - adds a card to the players hand
+	public void addToHand(Card h) { hand.add(h); }
 
-	public void setHand(Hand h) {
-		hand = h;
-	}
-
-	// other methods
+	//isBroke method - checks if player is out of money
 	public boolean isBroke() {
 		if (stack == 0)
 			return true;
@@ -57,5 +43,5 @@ public class Player {
 	public String toString() {
 		String p = name + "\n Stack: " + Integer.toString(stack) + "\n Hand: " + hand.toString();
 		return p;
-	}
-}
+	}//end toString method
+}//end Player class
