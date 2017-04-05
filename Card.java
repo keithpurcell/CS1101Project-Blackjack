@@ -1,9 +1,3 @@
-/* Leave comments here [...]
- * 
- */
-
-package blackjack;
-
 public class Card {
 
 	//attributes
@@ -46,5 +40,5 @@ public class Card {
 	public void setValue(int v) { value = v; }
 
 	//toString method
-	public String toString() { return id + " of " + suit; }
+	public String toString() { return id + " of " + suit+"s"; }
 }//end Card class

@@ -1,14 +1,12 @@
 /* Leave comments here [...]
  * 
  */
-
-package blackjack;
-
+import java.util.Random;
 import java.util.ArrayList;
 public class Deck {
 
 	//attributes - arraylist of cards
-	private ArrayList<Card> deck = new ArrayList<>(312);
+	private ArrayList<Card> deck = new ArrayList<>();
 
 	//no-args constructor 
 	public Deck() { }
@@ -17,19 +15,19 @@ public class Deck {
 	public void createDeck() {
 		for (int j = 0; j < 6; j++) {
 			for (int i = 1; i < 14; i++)
-				deck.add(i, new Card("Heart", i));
+				deck.add(new Card("Heart", i));
 		}
 		for (int j = 0; j < 6; j++) {
 			for (int i = 1; i < 14; i++)
-				deck.add(i, new Card("Spade", i));
+				deck.add(new Card("Spade", i));
 		}
 		for (int j = 0; j < 6; j++) {
 			for (int i = 1; i < 14; i++)
-				deck.add(i, new Card("Diamond", i));
+				deck.add(new Card("Diamond", i));
 		}
 		for (int j = 0; j < 6; j++) {
 			for (int i = 1; i < 14; i++)
-				deck.add(i, new Card("Club", i));
+				deck.add(new Card("Club", i));
 		}
 	}
 
@@ -61,12 +59,13 @@ public class Deck {
 		//create usedNums array to keep track of the numbers (indexes) already used to shuffle the deck
 		ArrayList<Integer> usedNums = new ArrayList<>();
 		//for loop - rearranges or "shuffles" 312 cards (equivalent to 6 decks - blackjack standard)
-		for (int i = 312; i >= 0; i--) {
+      Random rand = new Random();
+		for (int i = 311; i >= 0; i--) {
 			Card holder = new Card(deck.get(i).getSuit(), deck.get(i).getValue());
 			deck.remove(deck.get(i));
-			int randomNum = 1 + (int) (Math.random() * 312);
-			while (usedNums.indexOf(randomNum) == -1)
-				randomNum = 1 + (int) (Math.random() * 312);
+			int randomNum = rand.nextInt(312);//0-311
+			while (usedNums.indexOf(randomNum) != -1)
+				randomNum = rand.nextInt(312);//0-311
 			deck.add(randomNum, holder);
 			usedNums.add(randomNum);
 		} // end for loop

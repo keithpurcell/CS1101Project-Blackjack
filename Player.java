@@ -1,9 +1,3 @@
-/* Leave comments here [...]
- * 
- */
-
-package blackjack;
-
 public class Player {
 	
 	//attributes
@@ -15,6 +9,7 @@ public class Player {
 	public Player(String n, int s) {
 		name = n;
 		stack = s;
+      hand = new Hand();
 	}
 
 	public String getName() { return name; }
@@ -29,7 +24,7 @@ public class Player {
 	public void setStack(int s) { stack = s; }
 
 	//addToHand method - adds a card to the players hand
-	public void addToHand(Card h) { hand.add(h); }
+	public void addToHand(Card c) { hand.add(c); }
 
 	//isBroke method - checks if player is out of money
 	public boolean isBroke() {
